@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;900&display=swap');
+
+@font-face {
+    font-family: "Lovelo Black";
+    src: url("Lovelo-Black.woff") format('woff');
+}
+
+
+html, body,
+header, main, footer,
+h1, h2, h3, h4, h5, h6,
+p, div,
+article, nav, section,
+ul, li {
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    display: block;
+
+    list-style-type: none;
+}
+
+a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+}
+
+
+
+.page {
+    min-width: 720px;
+    height: 100%;
+
+    background-color: #a7282b;
+    font-family: 'M PLUS 1p', sans-serif;
+}
+
+
+
+.load {
+    width: 100vw;
+    height: 100vh;
+    background-color: #a7282b;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    transition: all 1s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.load--active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.load__text {
+    font-size: 20px;
+    font-family: "Lovelo Black";
+}
+
+
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+
+.header {
+    width: 100%;
+    background-color: #231d2c;
+    color: #d7cbbb;
+    font-family: "Lovelo Black";
+}
+
+.header__container {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    margin-left: 40px;
+    font-size: x-large;
+}
+
+.menu {
+    margin-right: 40px;
+    font-size: large;
+}
+
+.menu__list {
+    display: flex;
+}
+
+.menu__item {
+    margin-left: 40px;
+}
+
+.menu__link:hover {
+    color: white;
+}
+
+
+
+.main {
+    color: #231d2c;
+}
+
+
+
+.hero {
+    overflow: hidden;
+}
+
+.hero__container {
+    height: 720px;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    bottom: 120px;
+    left: 120px;
+    z-index: -999;
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.character {
+    position: absolute;
+    top: -40px;
+    right: 0px;
+    z-index: -1000;
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.character__image {
+    object-fit: cover;
+    object-position: top;
+}
+
+.copy {
+    position: absolute;
+    top: 160px;
+    left: 80px;
+    color: #d7cbbb;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 900;
+    line-height: 40px;
+}
+
+.copy__line {
+    display: inline-block;
+    transition: all 4s cubic-bezier(0.16, 1, 0.3, 1) 1s;
+}
+
+.copy__line--delay {
+    margin-left: 80px;
+    transition: all 4s cubic-bezier(0.16, 1, 0.3, 1) 1.2s;
+}
+
+.hero--inactive .logo {
+    transform: translateY(-120px);
+}
+
+.hero--inactive .character {
+    transform: translateY(120px);
+}
+
+.hero--inactive .copy__line {
+    opacity: 0;
+    transform: translateX(200px);
+}
+
+.pattern {
+    position: absolute;
+    width: 80px;
+    height: 2400px;
+    background-image: url("images/pattern.png");
+    background-repeat: repeat-y;
+    z-index: -2000;
+}
+
+.hero__pattern--left {
+    bottom: 120px;
+    left: 120px;
+    transform: translate(-50%, 50%) rotate(105deg);
+}
+
+.hero__pattern--right {
+    top: 120px;
+    right: 120px;
+    transform: translate(50%,-50%) rotate(-75deg);
+}
+
+
+
+.watch {
+    background-color: #231d2c;
+    color: #d7cbbb;
+    font-family: "Lovelo Black";
+    text-align: center;
+}
+
+.watch__container {
+    padding: 80px 0 160px 0;
+}
+
+.watch__heading {
+    font-size: large;
+}
+
+.watch__video {
+    margin-top: 80px;
+}
+
+
+
+.intro {
+    overflow: hidden;
+    color: #d7cbbb;
+}
+
+.intro__container {
+    padding: 80px 0 160px 0;
+    position: relative;
+}
+
+.intro__heading {
+    font-family: "Lovelo Black";
+    font-size: large;
+    text-align: center;
+}
+
+.intro__text {
+    margin-top: 80px;
+    text-align: center;
+}
+
+
+
+.section {
+    padding: 0 80px;
+    margin-top: 160px;
+    position: relative;
+    opacity: 1;
+}
+
+.section__text {
+    width: 66%;
+}
+
+.section__text--right {
+    margin: 0 0 0 auto;
+}
+
+.section__heading {
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section__description {
+    margin-top: 40px;
+    transition: all 2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.section__illustration {
+    position: absolute;
+    transition: all 4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.extinguisher {
+    top: -80px;
+    right: 120px;
+}
+
+.lighter {
+    top: 120px;
+    right: 80px;
+    transition: all 4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.diamond {
+    top: 40px;
+    left: 120px;
+}
+
+.gun {
+    top: -60px;
+    right: 60px;
+    transform: rotate(15deg);
+}
+
+.section--fade .section__heading,
+.section--fade .section__description {
+    opacity: 0;
+    transform: translateY(80px);
+}
+
+.section--fade .section__illustration {
+    opacity: 0;
+}
+
+.section--fade .extinguisher {
+    transform: translate(40px, -80px) rotate(15deg);
+}
+
+.section--fade .lighter {
+    transform: translate(-40px, 80px) rotate(15deg);
+}
+
+.section--fade .diamond {
+    transform: translateX(40px) rotate(360deg);
+}
+
+.section--fade .gun {
+    transform: translate(-80px, 40px) rotate(-90deg);
+}
+
+.intro__pattern--left {
+    bottom: 50%;
+    left: 0;
+    transform: translate(-50%, 50%) rotate(165deg);
+}
+
+.intro__pattern--right {
+    top: 50%;
+    right: 0;
+    transform: translate(50%,-50%) rotate(-15deg);
+}
+
+
+
+.footer {
+    background-color: #231d2c;
+    color: #d7cbbb;
+    font-family: "Lovelo Black";
+    text-align: center;
+}
+
+.footer__container {
+    padding: 80px 0;
+}
+
+.share__heading {
+    font-size: large;
+}
+
+.share__list {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.share__link {
+    display: block;
+}
+
+.share__item {
+    margin: 0 20px;
+}
+
+.share__link:hover {
+    filter: brightness(120%);
+}
+
+.share__icon {
+    width: 40px;
+}
+
+.copyright {
+    margin-top: 160px;
+    font-size: small;
+}
+
+.copyright__small {
+    font-size: x-small;
+}
