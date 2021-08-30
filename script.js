@@ -1,62 +1,65 @@
-function easeOutExpo(t, b, c, d) {
-    return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-}
-
-
+const load = document.getElementsByClassName("load")[0];
+const hero = document.getElementsByClassName("hero")[0];
 
 window.addEventListener("load", function() {
-    var load = document.getElementsByClassName("load")[0];
-    var hero = document.getElementsByClassName("hero")[0];
-    load.classList.remove("load--active");
-    hero.classList.remove("hero--inactive");
+    load.classList.add("load--inactive");
+    hero.classList.remove("hero--fade");
 }, true);
 
 
 
-var sections = document.getElementsByClassName("section");
-var sectionTops = []
+const sections = document.getElementsByTagName("section");
+const sectionTops = []
 for (var i = 0; i < sections.length; i++) {
-    var sectionTop = sections[i].getBoundingClientRect().top + window.pageYOffset;
+    const sectionTop = sections[i].getBoundingClientRect().top + window.pageYOffset;
     sectionTops.push(sectionTop);
 }
 
 window.addEventListener("scroll", function() {
-    var windowY = window.pageYOffset;
-    var windowH = window.innerHeight;
+    var y = window.pageYOffset;
+    var h = window.innerHeight;
     for (var i = 0; i < sections.length; i++) {
-        if (windowY + 0.8 * windowH > sectionTops[i]) {
-            sections[i].classList.remove("section--fade");
+        if (y + h * 0.8 > sectionTops[i]) {
+            sections[i].classList.remove("fade");
+        }
+        else {
+            sections[i].classList.add("fade");
         }
     }
 }, false);
 
 
 
-var menuLinks = document.getElementsByClassName("menu__link");
-var destinationTops = {};
-for (var i = 0; i < menuLinks.length; i++) {
-    var destinationId = menuLinks[i].getAttribute("href").slice(1);
-    var destination = document.getElementById(destinationId);
-    var destinationTop = destination.getBoundingClientRect().top + window.pageYOffset;
-    destinationTops[menuLinks[i]] = destinationTop;
+function easeOutExpo(t, b, c, d) {
+    return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
 }
 
-for (var i = 0; i < menuLinks.length; i++) {
-    menuLinks[i].addEventListener("click", function(event) {
-        var destinationTop = destinationTops[event.target];
+const nav = document.getElementsByTagName("nav")[0];
+const anchors = nav.getElementsByTagName("a");
 
-        var fromX = window.pageXOffset;
-        var fromY = window.pageYOffset;
-        var toY = Math.min(destinationTop, document.body.clientHeight - window.innerHeight);
+for (var i = 0; i < anchors.length; i++) {
+    const anchor = anchors[i];
 
-        var time = 0;
-        var duration = 60;
-        (function smoothScroll() {
-            window.scrollTo(fromX, easeOutExpo(time, fromY, toY, duration))
-            if (time < duration) {
-                window.requestAnimationFrame(smoothScroll);
+    const articleId = anchor.getAttribute("href").slice(1);
+    const article = document.getElementById(articleId);
+    const articleTop = article.getBoundingClientRect().top + window.pageYOffset;
+
+    anchor.addEventListener("click", function() {
+        var xFrom = window.pageXOffset;
+        var yFrom = window.pageYOffset;
+        var yTo = Math.min(articleTop, document.body.clientHeight - window.innerHeight);
+
+        var start = null;
+
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            var progress = timestamp - start;
+            window.scrollTo(xFrom, easeOutExpo(progress, yFrom, yTo, 1000));
+            if (progress < 1000) {
+                window.requestAnimationFrame(step);
             }
-            time++;
-        })();
+        }
+          
+        window.requestAnimationFrame(step);
     }, false);
 }
