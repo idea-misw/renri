@@ -328,6 +328,10 @@ main h2 {
     margin-top: 50px;
 }
 
+#share a {
+    cursor: pointer;    
+}
+
 #share a:hover {
     opacity: 0.8;
 }
